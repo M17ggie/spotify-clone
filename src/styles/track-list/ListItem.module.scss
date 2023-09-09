@@ -1,0 +1,49 @@
+.list-content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    width: 432px;
+    height: 80px;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.track-selected {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.artist-container {
+    width: auto;
+    height: 48px;
+    display: flex;
+}
+
+.track-thumbnail {
+    width: 48px;
+    height: 48px;
+    border-radius: 56px;
+}
+
+.track-title,
+.track-time,
+.artist-name {
+    color: white;
+}
+
+.track-title,
+.track-time {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.artist-name {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.artist-name,
+.track-time {
+    opacity: 0.6;
+}

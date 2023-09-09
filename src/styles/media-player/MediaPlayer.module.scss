@@ -1,0 +1,29 @@
+.media-player-container {
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-image {
+    width: 480px;
+    height: 480px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.track-title,
+.artist-name {
+    color: white;
+}
+
+.track-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+.artist-name {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
