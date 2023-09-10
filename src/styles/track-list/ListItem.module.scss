@@ -1,3 +1,5 @@
+@import "@styles/variable";
+
 .list-content-container {
     display: flex;
     justify-content: space-between;
@@ -11,7 +13,7 @@
 
 .track-selected {
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: $transparent;
 }
 
 .artist-container {
@@ -24,6 +26,7 @@
     width: 48px;
     height: 48px;
     border-radius: 56px;
+    margin-right: 10px;
 }
 
 .track-title,

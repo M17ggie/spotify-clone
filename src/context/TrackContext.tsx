@@ -1,7 +1,7 @@
 import { ITrackContext, ITrackContextProvider, ITrackData } from "@interfaces/context/context.interface";
 import { createContext, useState } from "react";
+import { toast } from 'react-toastify';
 import baseApiInstance from "../utils/axios";
-import { toast } from 'react-toastify'
 import { BASE_URL } from "../utils/constants";
 
 export const TrackContext = createContext<ITrackContext>({
@@ -9,35 +9,42 @@ export const TrackContext = createContext<ITrackContext>({
         artist: "",
         name: "",
         cover: "",
+        songURL: ""
     },
-    track: {},
     isLoading: false,
+    fetchTrackListHandler: () => { },
     fetchTrackHandler: () => { }
 });
 
 export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
-    const [track, setTrack] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [trackData, setTrackData] = useState({
         artist: "",
         name: "",
         cover: "",
+        songURL: ""
     });
 
-    const fetchTrackHandler = async (trackURL: string, trackDetail: ITrackData) => {
-        setIsLoading(true);
-        baseApiInstance(trackURL).then((res) => {
-            console.log(res.data);
-            setTrack(res.data);
+    const fetchTrackHandler = async (trackDetail: ITrackData) => {
+        baseApiInstance(trackDetail?.songURL).then(() => {
+
         }).catch(() => {
-            toast.error("Something went wrong!")
-        }).finally(() => {
-            setIsLoading(false);
-            setTrackData({ name: trackDetail?.name, artist: trackDetail?.artist, cover: `${BASE_URL}/assets/${trackDetail?.cover}` });
+            toast.error('Something went wrong!')
         })
+        setTrackData({ name: trackDetail?.name, artist: trackDetail?.artist, cover: `${BASE_URL}/assets/${trackDetail?.cover}`, songURL: trackDetail?.songURL });
     }
 
-    return <TrackContext.Provider value={{ track, isLoading, fetchTrackHandler, trackData }}>
+    const fetchTrackListHandler = async () => {
+        setIsLoading(true);
+        try {
+            const response = await baseApiInstance(`/items/songs`);
+            return response.data.data
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    return <TrackContext.Provider value={{ isLoading, fetchTrackListHandler, fetchTrackHandler, trackData }}>
         {children}
     </TrackContext.Provider>
 }

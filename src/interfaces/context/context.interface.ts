@@ -1,14 +1,16 @@
+
 export interface ITrackData {
     artist: string,
     name: string,
     cover: string,
+    songURL: string,
 }
 
 export interface ITrackContext {
     trackData: ITrackData,
     isLoading: boolean,
-    track?: any,
-    fetchTrackHandler: (trackURL: string, trackDetail: ITrackData) => void
+    fetchTrackListHandler: () => void
+    fetchTrackHandler: (trackDetail: ITrackData) => void
 }
 
 export interface ITrackContextProvider {

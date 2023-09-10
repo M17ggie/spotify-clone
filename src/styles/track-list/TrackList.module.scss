@@ -1,19 +1,42 @@
 @import "@styles/variable";
 
-.search-input {
-    width: 400px;
-    height: 48px;
-    border-radius: 8px;
-    padding: 8px 16px;
-    background-color: transparent;
-    border: none;
-    caret-color: $offwhite;
+.tracks-container {
+    position: relative;
+    top: 40px;
+    width: 432px;
 }
 
-.search-input::before {
-    content: "";
+.search-container {
+    display: block;
+    position: relative;
+    width: 400px;
+    height: 48px;
+    margin: 16px auto;
+}
+
+.search-icon {
+    position: absolute;
+    top: 10px;
+    left: auto;
+    right: 10px;
+    transform: translate(25%, 10%);
     background: url("@assets/search-icon.svg") no-repeat;
     background-size: 20px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.4;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: $transparent;
+    border: none;
+    caret-color: $offwhite;
+    color: $white;
+    position: relative;
 }
 
 .search-input:focus {

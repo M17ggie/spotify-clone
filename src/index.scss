@@ -1,3 +1,31 @@
-:root {
-    font-family: 'Inter', sans-serif;
+@import "@styles/variable.scss";
+@import "bootstrap/scss/bootstrap";
+
+// body
+$body-bg: $background-color;
+
+//typography
+$font-family-base: 'Inter', sans-serif;
+
+p {
+    margin: 0 !important;
+    padding: 0 !important;
 }
+
+// tabs
+$nav-link-color: $white;
+$nav-tabs-link-active-bg: transparent;
+$nav-tabs-border-width: none;
+$nav-tabs-link-active-color: $white;
+$nav-link-color: rgba(255, 255, 255, 0.5);
+$nav-link-hover-color: $offwhite;
+$nav-link-font-size: 24px;
+
+.nav-item {
+    .active {
+        font-weight: 700;
+    }
+}
+
+
+@import "bootstrap"

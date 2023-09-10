@@ -19,3 +19,11 @@ export interface IListItem {
     isSelected: boolean,
     onSelect: () => void
 }
+
+export interface ITracksComponent {
+    isLoading: boolean,
+    trackList: ITrackInfo[],
+    searchQuery: string,
+    selectedItem: number | null,
+    handleSelect: (index: number) => void
+}

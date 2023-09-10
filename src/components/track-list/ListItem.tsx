@@ -7,10 +7,10 @@ import { changeBackgroundColor } from "@utils/helper"
 
 const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
 
-    const { fetchTrackHandler, trackData, isLoading } = useContext(TrackContext);
+    const { trackData, isLoading, fetchTrackHandler } = useContext(TrackContext);
 
     const handleFetchTrack = () => {
-        fetchTrackHandler(data?.url, { name: data?.name, artist: data?.artist, cover: data?.cover });
+        fetchTrackHandler({ name: data?.name, artist: data?.artist, cover: data?.cover, songURL: data?.url });
         onSelect();
         changeBackgroundColor(data?.accent)
     }
@@ -24,9 +24,7 @@ const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
     return (
         <div className={containerClassName} onClick={handleFetchTrack}>
             <div className={styles["artist-container"]}>
-                <div>
-                    <img src={`${BASE_URL}/assets/${data?.cover}`} className={styles["track-thumbnail"]} />
-                </div>
+                <img src={`${BASE_URL}/assets/${data?.cover}`} className={styles["track-thumbnail"]} />
                 <div>
                     <p className={styles["track-title"]}>
                         {data?.name}

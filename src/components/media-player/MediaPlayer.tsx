@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 const MediaPlayer = () => {
 
-    const { track, trackData } = useContext(TrackContext);
+    const { trackData } = useContext(TrackContext);
 
     return (
         <div className={styles["media-player-container"]}>
@@ -18,7 +18,7 @@ const MediaPlayer = () => {
             </div>
             <img src={trackData?.cover} className={styles["cover-image"]} />
             <audio controls>
-                <source src={track} type='audio/mpeg' />
+                <source src={trackData?.songURL} type='audio/mpeg' />
             </audio>
         </div>
     );
