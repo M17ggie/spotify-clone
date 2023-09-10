@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 const MediaPlayer = () => {
 
-    const { track, isLoading, trackData } = useContext(TrackContext);
+    const { track, trackData } = useContext(TrackContext);
 
     return (
         <div className={styles["media-player-container"]}>

@@ -1,0 +1,25 @@
+@import "@styles/variable";
+
+.search-input {
+    width: 400px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: none;
+    caret-color: $offwhite;
+}
+
+.search-input::before {
+    content: "";
+    background: url("@assets/search-icon.svg") no-repeat;
+    background-size: 20px;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: $offwhite;
+}
