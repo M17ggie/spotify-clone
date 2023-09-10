@@ -8,7 +8,7 @@
     height: 80px;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
+    transition: background-color 0.5s ease, opacity 0.5s ease;
 }
 
 .track-selected {
@@ -29,10 +29,8 @@
     margin-right: 10px;
 }
 
-.track-title,
-.track-time,
-.artist-name {
-    color: white;
+.track-title {
+    color: $white;
 }
 
 .track-title,
@@ -48,5 +46,5 @@
 
 .artist-name,
 .track-time {
-    opacity: 0.6;
+    color: $offwhite;
 }
