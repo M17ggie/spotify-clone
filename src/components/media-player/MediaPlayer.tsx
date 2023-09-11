@@ -29,9 +29,9 @@ const MediaPlayer = () => {
             </audio>
             <div className={styles["media-controls-container"]}>
                 <div className={styles["media-player-controls"]}>
-                    <img src={prev} onClick={() => { prevTrack(Number(trackData?.id)) }} />
+                    <img className={styles["prev-btn"]} src={prev} onClick={() => { prevTrack(Number(trackData?.id)) }} />
                     <img src={play} />
-                    <img src={next} onClick={() => { nextTrack(Number(trackData?.id)) }} />
+                    <img className={styles["next-btn"]} src={next} onClick={() => { nextTrack(Number(trackData?.id)) }} />
                 </div>
             </div>
         </div>

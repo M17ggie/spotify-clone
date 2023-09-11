@@ -10,7 +10,7 @@
     cursor: pointer;
     transition: background-color 0.5s ease, opacity 0.5s ease;
 
-    @media screen and (max-width: $medium)  {
+    @media screen and (max-width: $small)  {
         width: 100%;
         max-width: 100%;
         min-width: 0;
@@ -44,7 +44,7 @@
     font-size: 18px;
     line-height: 24px;
 
-    @media screen and (max-width: $medium)  {
+    @media screen and (max-width: $small)  {
         font-size: 16px;
     }
 }
@@ -53,7 +53,7 @@
     font-size: 14px;
     line-height: 24px;
 
-    @media screen and (max-width: $medium)  {
+    @media screen and (max-width: $small)  {
         font-size: 12px;
     }
 }
