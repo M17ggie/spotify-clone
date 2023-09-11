@@ -12,6 +12,7 @@
       "@context/*": ["src/context/*"],
       "@hooks/*": ["src/hooks/*"],
       "@interfaces/*": ["src/interfaces/*"],
+      "@queries/*": ["src/queries/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
     },

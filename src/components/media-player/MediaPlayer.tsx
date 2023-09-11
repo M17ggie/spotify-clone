@@ -8,7 +8,7 @@ import play from "@assets/play.svg"
 
 const MediaPlayer = () => {
 
-    const { trackData, isLoading } = useContext(TrackContext);
+    const { trackData, isLoading, nextTrack, prevTrack } = useContext(TrackContext);
 
     return (
         <div className={styles["media-player-container"]}>
@@ -29,9 +29,9 @@ const MediaPlayer = () => {
             </audio>
             <div className={styles["media-controls-container"]}>
                 <div className={styles["media-player-controls"]}>
-                    <img src={prev} />
+                    <img src={prev} onClick={() => { prevTrack(Number(trackData?.id)) }} />
                     <img src={play} />
-                    <img src={next} />
+                    <img src={next} onClick={() => { nextTrack(Number(trackData?.id)) }} />
                 </div>
             </div>
         </div>

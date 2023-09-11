@@ -6,6 +6,7 @@ const aliases = {
     '@context': path.resolve(__dirname, 'src/context'),
     '@hooks': path.resolve(__dirname, 'src/hooks'),
     '@interfaces': path.resolve(__dirname, 'src/interfaces'),
+    '@queries': path.resolve(__dirname, 'src/queries'),
     '@styles': path.resolve(__dirname, 'src/styles'),
     '@utils': path.resolve(__dirname, 'src/utils'),
 }

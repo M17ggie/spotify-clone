@@ -11,7 +11,7 @@ const TrackList = () => {
     const [activeTab, setActiveTab] = useState<number>(0);
     const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
-    const { fetchTrackListHandler, isLoading } = useContext(TrackContext);
+    const { isLoading, fetchTrackListHandler } = useContext(TrackContext);
     const [trackList, setTrackList] = useState<ITrackInfo[]>([]);
 
     useEffect(() => {

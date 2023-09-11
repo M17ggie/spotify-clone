@@ -10,6 +10,8 @@ export interface ITrackData {
 export interface ITrackContext {
     trackData: ITrackData,
     isLoading: boolean,
+    nextTrack: (trackIndex: number) => void
+    prevTrack: (trackIndex: number) => void
     fetchTrackListHandler: () => void
     fetchTrackHandler: (trackDetail: ITrackData) => void
 }

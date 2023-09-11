@@ -5,12 +5,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '@styles/index.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import { TrackContextProvider } from './context/TrackContext.tsx';
-
+import { ApolloProvider } from "@apollo/client";
+import { client } from '@utils/graphql.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <TrackContextProvider>
-      <App />
-    </TrackContextProvider>
+    <ApolloProvider client={client}>
+      <TrackContextProvider>
+        <App />
+      </TrackContextProvider>
+    </ApolloProvider>
   </React.StrictMode>,
 )

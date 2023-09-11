@@ -15,11 +15,14 @@ const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
         changeBackgroundColor(data?.accent)
     }
 
-    document.title = isLoading ? "Loading..." : `${trackData?.name} | ${trackData?.artist}`
+    if (trackData?.name) {
+        document.title = isLoading ? "Loading..." : `${trackData?.name} | ${trackData?.artist}`
+    }
 
     const containerClassName = isSelected
         ? `${styles["list-content-container"]} ${styles["track-selected"]}`
         : styles["list-content-container"];
+
 
     return (
         <div className={containerClassName} onClick={handleFetchTrack}>
