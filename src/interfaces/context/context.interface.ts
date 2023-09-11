@@ -1,5 +1,6 @@
 
 export interface ITrackData {
+    id: number | null,
     artist: string,
     name: string,
     cover: string,

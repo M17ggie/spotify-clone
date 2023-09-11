@@ -6,6 +6,7 @@ import { BASE_URL } from "../utils/constants";
 
 export const TrackContext = createContext<ITrackContext>({
     trackData: {
+        id: null,
         artist: "",
         name: "",
         cover: "",
@@ -18,7 +19,8 @@ export const TrackContext = createContext<ITrackContext>({
 
 export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [trackData, setTrackData] = useState({
+    const [trackData, setTrackData] = useState<ITrackData>({
+        id: null,
         artist: "",
         name: "",
         cover: "",
@@ -27,11 +29,11 @@ export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
 
     const fetchTrackHandler = async (trackDetail: ITrackData) => {
         baseApiInstance(trackDetail?.songURL).then(() => {
-
+            //set tracklist length
         }).catch(() => {
             toast.error('Something went wrong!')
         })
-        setTrackData({ name: trackDetail?.name, artist: trackDetail?.artist, cover: `${BASE_URL}/assets/${trackDetail?.cover}`, songURL: trackDetail?.songURL });
+        setTrackData({ id: trackDetail?.id, name: trackDetail?.name, artist: trackDetail?.artist, cover: `${BASE_URL}/assets/${trackDetail?.cover}`, songURL: trackDetail?.songURL });
     }
 
     const fetchTrackListHandler = async () => {
@@ -43,6 +45,10 @@ export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
             setIsLoading(false)
         }
     }
+
+    // const nextTrack = () => {
+
+    // }
 
     return <TrackContext.Provider value={{ isLoading, fetchTrackListHandler, fetchTrackHandler, trackData }}>
         {children}

@@ -1,17 +1,19 @@
-import './App.scss'
-import spotifyLogo from '@assets/spotify-logo.svg'
 import TrackList from '@components/track-list/TrackList'
 import { ToastContainer } from 'react-toastify'
 import MediaPlayer from './components/media-player/MediaPlayer'
+import Profile from '@components/profile/Profile'
+import styles from "@styles/App.module.scss"
 
 function App() {
 
   return (
-    <div className='d-flex'>
-      <img className='logo' src={spotifyLogo} />
+    <div className={styles["main-container"]}>
+
+      <Profile />
+
+      <TrackList />
 
       <MediaPlayer />
-      <TrackList />
 
 
       <ToastContainer

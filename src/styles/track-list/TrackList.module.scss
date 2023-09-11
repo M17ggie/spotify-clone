@@ -3,7 +3,7 @@
 .tracks-container {
     position: relative;
     top: 40px;
-    width: 432px;
+    min-width: 432px;
 }
 
 .search-container {
@@ -53,4 +53,5 @@
     opacity: 0.6;
     color: $offwhite;
     text-align: center;
+    width: 100%;
 }

@@ -12,14 +12,16 @@ const Tracks = ({ searchQuery, handleSelect, selectedItem, trackList, isLoading 
             filteredTrackList.length === 0 ? (
                 <p className={styles["empty-tracklist-text"]}>Couldn't find anything!</p>
             ) : (
-                filteredTrackList.map((trackInfo: ITrackInfo, index: number) => (
-                    <ListItem
-                        key={index}
-                        data={trackInfo}
-                        isSelected={index === selectedItem}
-                        onSelect={() => handleSelect(index)}
-                    />
-                ))
+                <>
+                    {filteredTrackList.map((trackInfo: ITrackInfo, index: number) => (
+                        <ListItem
+                            key={index}
+                            data={trackInfo}
+                            isSelected={index === selectedItem}
+                            onSelect={() => handleSelect(index)}
+                        />
+                    ))}
+                </>
             )
     )
 }

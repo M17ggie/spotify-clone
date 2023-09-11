@@ -10,7 +10,7 @@ const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
     const { trackData, isLoading, fetchTrackHandler } = useContext(TrackContext);
 
     const handleFetchTrack = () => {
-        fetchTrackHandler({ name: data?.name, artist: data?.artist, cover: data?.cover, songURL: data?.url });
+        fetchTrackHandler({ id: data?.id, name: data?.name, artist: data?.artist, cover: data?.cover, songURL: data?.url });
         onSelect();
         changeBackgroundColor(data?.accent)
     }
