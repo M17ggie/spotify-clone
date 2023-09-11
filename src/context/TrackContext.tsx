@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { ITrackInfo } from "../interfaces/track-list/track-list.interface";
 import baseApiInstance from "../utils/axios";
 import { BASE_URL } from "../utils/constants";
+import { changeBackgroundColor } from "../utils/helper";
 
 export const TrackContext = createContext<ITrackContext>({
     trackData: {
@@ -72,8 +73,8 @@ export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
         if (nextIndex >= trackList.length) {
             nextIndex = 0;
         }
-        console.log(nextIndex, trackIndex)
         const { id, name, artist, cover, url: songURL } = trackList[nextIndex];
+        changeBackgroundColor(trackList[nextIndex]["accent"])
         setTrackData({ id, name, artist, cover: `${BASE_URL}/assets/${cover}`, songURL });
     }
 
@@ -86,6 +87,7 @@ export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
             prevIndex = trackList.length;
         }
         const { id, name, artist, cover, url: songURL } = trackList[prevIndex - 1];
+        changeBackgroundColor(trackList[prevIndex - 1]["accent"])
         setTrackData({ id, name, artist, cover: `${BASE_URL}/assets/${cover}`, songURL });
     }
 
