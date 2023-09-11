@@ -1,20 +1,27 @@
+import Profile from '@components/profile/Profile'
 import TrackList from '@components/track-list/TrackList'
+import styles from "@styles/App.module.scss"
 import { ToastContainer } from 'react-toastify'
 import MediaPlayer from './components/media-player/MediaPlayer'
-import Profile from '@components/profile/Profile'
-import styles from "@styles/App.module.scss"
 
 function App() {
+
+  // const [showTrackList, setShowTrackList] = useState(false);
+
+  // const toggleTrackList = () => {
+  //   setShowTrackList(!showTrackList);
+  // };
 
   return (
     <div className={styles["main-container"]}>
 
       <Profile />
 
+      {/* <div className='d-none d-md-block'> */}
       <TrackList />
+      {/* </div> */}
 
       <MediaPlayer />
-
 
       <ToastContainer
         position="top-right"
@@ -25,7 +32,7 @@ function App() {
         rtl={false}
         theme="colored"
       />
-    </div>
+    </div >
   )
 }
 

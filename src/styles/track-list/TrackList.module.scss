@@ -4,6 +4,13 @@
     position: relative;
     top: 40px;
     min-width: 432px;
+    z-index: 100;
+
+    @media screen and (max-width: $medium) {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
 }
 
 .search-container {
@@ -12,6 +19,12 @@
     width: 400px;
     height: 48px;
     margin: 16px auto;
+
+    @media screen and (max-width: $medium) {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
 }
 
 .search-icon {

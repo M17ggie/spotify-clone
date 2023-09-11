@@ -1,3 +1,9 @@
+@import "@styles/variable.scss";
+
 .main-container {
     display: flex;
+
+    @media screen and (max-width: $small) {
+        flex-direction: column;
+    }
 }
