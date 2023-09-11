@@ -86,10 +86,21 @@
     .media-controls-container {
         width: 100%;
         display: flex;
+        justify-content: center;
 
         .media-player-controls {
             width: 176px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .prev-btn,
+            .next-btn {
+                width: 32px;
+                height: 32px;
+                opacity: 0.6;
+            }
         }
+
     }
 }
