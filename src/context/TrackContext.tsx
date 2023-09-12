@@ -5,6 +5,7 @@ import { ITrackInfo } from "../interfaces/track-list/track-list.interface";
 import baseApiInstance from "../utils/axios";
 import { BASE_URL } from "../utils/constants";
 import { changeBackgroundColor } from "../utils/helper";
+import { useQuery, gql } from '@apollo/client';
 
 export const TrackContext = createContext<ITrackContext>({
     trackData: {
@@ -43,19 +44,21 @@ export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
         setTrackData({ id: trackDetail?.id, name: trackDetail?.name, artist: trackDetail?.artist, cover: `${BASE_URL}/assets/${trackDetail?.cover}`, songURL: trackDetail?.songURL });
     }
 
-    // const query = `
-    //   query {
-    //     songs {
-    //       id
-    //       name
-    //       artist
-    //       cover
-    //       url
-    //     }
-    //   }
-    // `;
+    const query = gql`
+      query {
+        songs {
+          id
+          name
+          artist
+          cover
+          url
+        }
+      }
+    `;
 
     // fetch(`${BASE_URL}/items/graphql?query=${encodeURIComponent(query)}`)
+    const { data } = useQuery(query);
+    console.log(data)
     const fetchTrackListHandler = async () => {
         setIsLoading(true);
         try {

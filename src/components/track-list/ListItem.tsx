@@ -2,12 +2,12 @@ import { TrackContext } from "@context/TrackContext"
 import { IListItem } from "@interfaces/track-list/track-list.interface"
 import styles from "@styles/track-list/ListItem.module.scss"
 import { BASE_URL } from "@utils/constants"
-import { useContext } from "react"
 import { changeBackgroundColor } from "@utils/helper"
+import { useContext } from "react"
 
 const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
 
-    const { trackData, isLoading, currentlyPlayingTrackId, fetchTrackHandler } = useContext(TrackContext);
+    const { trackData, isLoading, fetchTrackHandler } = useContext(TrackContext);
 
     const handleFetchTrack = () => {
         fetchTrackHandler({ id: data?.id, name: data?.name, artist: data?.artist, cover: data?.cover, songURL: data?.url });
@@ -18,8 +18,6 @@ const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
     if (trackData?.name) {
         document.title = isLoading ? "Loading..." : `${trackData?.name} | ${trackData?.artist}`
     }
-
-    console.log(data?.id, currentlyPlayingTrackId)
 
     const containerClassName = isSelected
         ? `${styles["list-content-container"]} ${styles["track-selected"]}`
