@@ -15,6 +15,8 @@ export const TrackContext = createContext<ITrackContext>({
         songURL: ""
     },
     isLoading: false,
+    currentlyPlayingTrackId: null,
+    currentTrackPlayingHandler: () => { },
     fetchTrackListHandler: () => { },
     nextTrack: () => { },
     prevTrack: () => { },
@@ -23,7 +25,8 @@ export const TrackContext = createContext<ITrackContext>({
 
 export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [trackList, setTrackList] = useState<ITrackInfo[]>([])
+    const [trackList, setTrackList] = useState<ITrackInfo[]>([]);
+    const [currentlyPlayingTrackId, setCurrentlyPlayingTrackId] = useState<number | null>(null);
     const [trackData, setTrackData] = useState<ITrackData>({
         id: null,
         artist: "",
@@ -91,9 +94,15 @@ export const TrackContextProvider = ({ children }: ITrackContextProvider) => {
         setTrackData({ id, name, artist, cover: `${BASE_URL}/assets/${cover}`, songURL });
     }
 
+    const currentTrackPlayingHandler = (index: number) => {
+        setCurrentlyPlayingTrackId(index)
+    }
+
     return <TrackContext.Provider value={{
         isLoading,
         trackData,
+        currentlyPlayingTrackId,
+        currentTrackPlayingHandler,
         fetchTrackListHandler,
         fetchTrackHandler,
         nextTrack,

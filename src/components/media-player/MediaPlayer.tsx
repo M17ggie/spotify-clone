@@ -6,6 +6,8 @@ import next from "@assets/next.svg"
 import prev from "@assets/prev.svg"
 import play from "@assets/play.svg"
 import pause from "@assets/pause.png"
+import volume from "@assets/volume.svg"
+import dots from "@assets/dots.svg"
 import { toast } from 'react-toastify'
 
 const MediaPlayer = () => {
@@ -16,6 +18,18 @@ const MediaPlayer = () => {
     const seekerFillRef = useRef<HTMLDivElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [songProgress, setSongProgress] = useState(0);
+    const [isMuted, setIsMuted] = useState(false);
+
+    const toggleMute = () => {
+        if (audioElement.current) {
+            if (!isMuted) {
+                audioElement.current.volume = 0;
+            } else {
+                audioElement.current.volume = 1;
+            }
+            setIsMuted(!isMuted);
+        }
+    };
 
     const handlePlayPause = () => {
         if (audioElement.current) {
@@ -64,10 +78,10 @@ const MediaPlayer = () => {
 
     useEffect(() => {
         if (audioElement.current) {
+            setIsPlaying(true);
             audioElement.current.addEventListener('ended', () => {
                 // Automatically play the next song when the current song ends
                 nextTrack(Number(trackData?.id));
-                setIsPlaying(true);
             });
         }
 
@@ -109,10 +123,18 @@ const MediaPlayer = () => {
                 Your browser doesn't support audio files
             </audio>
             <div className={styles["media-controls-container"]}>
+                <div className={styles["control-bg"]}>
+                    <img className={`${styles["dots"]}`} src={dots} />
+                </div>
                 <div className={styles["media-player-controls"]}>
                     <img className={styles["prev-btn"]} src={prev} onClick={() => { prevTrack(Number(trackData?.id)); setIsPlaying(true) }} />
                     <img src={isPlaying ? pause : play} className={styles["play-pause"]} onClick={handlePlayPause} />
                     <img className={styles["next-btn"]} src={next} onClick={() => { nextTrack(Number(trackData?.id)); setIsPlaying(true) }} />
+                </div>
+                <div className={styles["control-bg"]} onClick={toggleMute}>
+                    <div className={styles["volume-knob"]}>
+                        <img className={styles["volume-knob"]} src={volume} />
+                    </div>
                 </div>
             </div>
         </div>

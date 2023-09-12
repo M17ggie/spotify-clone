@@ -2,9 +2,12 @@ import { ITrackInfo, ITracksComponent } from "@interfaces/track-list/track-list.
 import Loader from "../loader/Loader"
 import ListItem from "./ListItem"
 import styles from "@styles/track-list/TrackList.module.scss"
+import { TrackContext } from "@context/TrackContext"
+import { useContext } from "react"
 
 const Tracks = ({ searchQuery, handleSelect, selectedItem, trackList, isLoading }: ITracksComponent) => {
 
+    const { currentTrackPlayingHandler } = useContext(TrackContext)
     const filteredTrackList = trackList?.filter((track: ITrackInfo) => track?.name.toLowerCase().includes(searchQuery) || track?.artist.toLowerCase().includes(searchQuery))
 
     return (
@@ -18,7 +21,7 @@ const Tracks = ({ searchQuery, handleSelect, selectedItem, trackList, isLoading 
                             key={index}
                             data={trackInfo}
                             isSelected={index === selectedItem}
-                            onSelect={() => handleSelect(index)}
+                            onSelect={() => { handleSelect(index); currentTrackPlayingHandler(index) }}
                         />
                     ))}
                 </>

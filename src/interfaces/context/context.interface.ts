@@ -9,7 +9,9 @@ export interface ITrackData {
 
 export interface ITrackContext {
     trackData: ITrackData,
-    isLoading: boolean,
+    isLoading: boolean
+    currentlyPlayingTrackId: number | null
+    currentTrackPlayingHandler: (index: number) => void
     nextTrack: (trackIndex: number) => void
     prevTrack: (trackIndex: number) => void
     fetchTrackListHandler: () => void

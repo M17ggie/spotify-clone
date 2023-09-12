@@ -7,7 +7,7 @@ import { changeBackgroundColor } from "@utils/helper"
 
 const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
 
-    const { trackData, isLoading, fetchTrackHandler } = useContext(TrackContext);
+    const { trackData, isLoading, currentlyPlayingTrackId, fetchTrackHandler } = useContext(TrackContext);
 
     const handleFetchTrack = () => {
         fetchTrackHandler({ id: data?.id, name: data?.name, artist: data?.artist, cover: data?.cover, songURL: data?.url });
@@ -18,6 +18,8 @@ const ListItem = ({ data, isSelected, onSelect }: IListItem) => {
     if (trackData?.name) {
         document.title = isLoading ? "Loading..." : `${trackData?.name} | ${trackData?.artist}`
     }
+
+    console.log(data?.id, currentlyPlayingTrackId)
 
     const containerClassName = isSelected
         ? `${styles["list-content-container"]} ${styles["track-selected"]}`
